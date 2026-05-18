@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/lottodreamusa/:path*",
+      "destination": "/lottodreamusa/index.html"
+    }
+  ]
+}
