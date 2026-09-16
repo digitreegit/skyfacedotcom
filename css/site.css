@@ -29,6 +29,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
   -webkit-text-size-adjust: 100%;
 }
 
@@ -95,14 +96,15 @@ button {
   top: 0;
   z-index: 40;
   height: var(--header-h);
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.48);
+  backdrop-filter: saturate(180%) blur(22px);
+  -webkit-backdrop-filter: saturate(180%) blur(22px);
   border-bottom: 1px solid transparent;
 }
 
 .site-header.is-scrolled {
-  border-bottom-color: var(--line);
-  background: rgba(255, 255, 255, 0.92);
+  border-bottom-color: rgba(223, 227, 232, 0.7);
+  background: rgba(255, 255, 255, 0.58);
 }
 
 .header-inner {
@@ -209,12 +211,16 @@ button {
   font-size: 15px;
 }
 
+main {
+  margin-top: calc(-1 * var(--header-h));
+}
+
 /* Hero */
 .hero {
   position: relative;
   overflow: hidden;
   text-align: center;
-  padding: 88px 0 96px;
+  padding: calc(88px + var(--header-h)) 0 96px;
   background:
     radial-gradient(ellipse 42% 36% at 18% 22%, rgba(255, 255, 255, 0.88), transparent 70%),
     radial-gradient(ellipse 48% 40% at 82% 8%, rgba(255, 255, 255, 0.7), transparent 68%),
@@ -282,6 +288,10 @@ button {
 
 /* Sections */
 .section { padding: 88px 0; }
+
+main.section {
+  padding-top: calc(40px + var(--header-h));
+}
 
 .section-head {
   text-align: center;
@@ -509,7 +519,7 @@ button {
 .site-footer a:hover { color: var(--fg); }
 
 /* Case study */
-.case { padding: 48px 0 96px; }
+.case { padding: calc(48px + var(--header-h)) 0 96px; }
 
 .case h1 {
   font-size: clamp(2.2rem, 5vw, 3.4rem);
@@ -703,8 +713,9 @@ button {
   .shot-gallery .shot:first-child,
   .shot-gallery .shot { height: 240px; }
 
-  .hero { padding: 64px 0 72px; }
+  .hero { padding: calc(64px + var(--header-h)) 0 72px; }
   .section { padding: 64px 0; }
+  main.section { padding-top: calc(32px + var(--header-h)); }
   .shot { height: 220px; }
 }
 
@@ -721,7 +732,9 @@ button {
     align-items: stretch;
     gap: 0;
     padding: 8px 20px 20px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: saturate(180%) blur(22px);
+    -webkit-backdrop-filter: saturate(180%) blur(22px);
     border-bottom: 1px solid var(--line);
     z-index: 30;
   }
