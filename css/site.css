@@ -255,7 +255,7 @@ main {
 .hero h1 {
   margin: 0 auto;
   max-width: 14em;
-  font-size: clamp(2.2rem, 5vw, 3.85rem);
+  font-size: clamp(2.4rem, 5.6vw, 4.4rem);
   font-weight: 560;
   letter-spacing: -0.045em;
   line-height: 1.12;
@@ -383,10 +383,8 @@ main.section {
   border: 1px solid var(--line);
 }
 
-.work-card .shot--vault img,
-.work-card .shot--golf img,
-.work-card .shot--frame img {
-  object-position: center;
+.work-card .shot--golf img {
+  object-position: center 30%;
 }
 
 .work-body {
@@ -624,17 +622,24 @@ main.section {
   grid-template-columns: repeat(2, minmax(0, 260px));
 }
 
+.device-gallery--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .device-gallery .shot {
   height: auto;
   flex-direction: column;
   justify-content: flex-start;
+  background: var(--shot-bg);
+  border: 1px solid var(--line);
 }
 
 .device-gallery .shot img {
   height: auto;
-  aspect-ratio: 523 / 1024;
-  object-fit: contain;
-  padding: 12px 12px 0;
+  aspect-ratio: 472 / 1024;
+  object-fit: cover;
+  object-position: top center;
+  padding: 0;
 }
 
 .device-gallery figcaption {
@@ -862,7 +867,8 @@ main.section {
   .shot-gallery .shot { height: 240px; }
 
   .device-gallery,
-  .device-gallery--pair { grid-template-columns: 1fr 1fr; }
+  .device-gallery--pair,
+  .device-gallery--three { grid-template-columns: 1fr 1fr; }
   .store-gallery { grid-template-columns: 1fr; }
   .feature-grid { grid-template-columns: 1fr; }
 
