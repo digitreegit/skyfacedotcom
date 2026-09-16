@@ -1,6 +1,4 @@
 # Drop project screenshots here.
-# Homepage cards look for:
-#   my-password-vault.png
-#   my-golf-score-card.png
-#   bakkt.png
-#   sparemin.png
+# Homepage list icons:
+#   icon-my-password-vault.png
+#   icon-my-golf-score-card.png
