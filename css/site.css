@@ -389,6 +389,14 @@ main.section {
   object-position: center 30%;
 }
 
+.work-card .shot--bakkt img {
+  object-position: center 8%;
+}
+
+.work-card .shot--spare img {
+  object-position: center 18%;
+}
+
 .work-body {
   padding: 22px 8px 0;
   text-align: left;
@@ -644,6 +652,14 @@ main.section {
   padding: 0;
 }
 
+.device-gallery--bakkt .shot img {
+  aspect-ratio: 375 / 770;
+}
+
+.device-gallery--spare .shot img {
+  aspect-ratio: 499 / 888;
+}
+
 .device-gallery figcaption {
   padding: 8px 12px 14px;
   font-size: 13px;
@@ -707,6 +723,17 @@ main.section {
   padding: 10px 14px 14px;
   font-size: 13px;
   color: var(--muted);
+}
+
+.frame-gallery--natural .shot img {
+  width: auto;
+  max-width: 100%;
+  max-height: min(72vh, 680px);
+  height: auto;
+  margin-inline: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: top center;
 }
 
 .feature-grid {
