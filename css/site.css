@@ -11,10 +11,7 @@
   --sky-end: #ffffff;
   --btn: #111111;
   --btn-fg: #ffffff;
-  --vault: linear-gradient(160deg, #fff3c4 0%, #ffd6e8 100%);
-  --golf: linear-gradient(160deg, #d9f5e2 0%, #c8ebff 100%);
-  --bakkt: linear-gradient(160deg, #e8f1ff 0%, #d6e4ff 100%);
-  --spare: linear-gradient(160deg, #eee8ff 0%, #f7d9f0 100%);
+  --shot-bg: #f3f5f7;
   --radius: 20px;
   --radius-lg: 28px;
   --header-h: 72px;
@@ -257,11 +254,11 @@ main {
 
 .hero h1 {
   margin: 0 auto;
-  max-width: 12ch;
-  font-size: clamp(2.8rem, 7.4vw, 5.6rem);
+  max-width: 14em;
+  font-size: clamp(2.2rem, 5vw, 3.85rem);
   font-weight: 560;
-  letter-spacing: -0.05em;
-  line-height: 1.04;
+  letter-spacing: -0.045em;
+  line-height: 1.12;
   color: #111;
 }
 
@@ -377,12 +374,20 @@ main.section {
   color: rgba(17, 17, 17, 0.28);
 }
 
-.shot--vault { background: var(--vault); }
-.work-card .shot--vault img { object-position: center 18%; }
-.shot--golf { background: var(--golf); }
-.work-card .shot--golf img { object-position: center 18%; }
-.shot--bakkt { background: var(--bakkt); }
-.shot--spare { background: var(--spare); }
+.shot--vault,
+.shot--golf,
+.shot--bakkt,
+.shot--spare,
+.shot--frame {
+  background: var(--shot-bg);
+  border: 1px solid var(--line);
+}
+
+.work-card .shot--vault img,
+.work-card .shot--golf img,
+.work-card .shot--frame img {
+  object-position: center;
+}
 
 .work-body {
   padding: 22px 8px 0;
@@ -462,11 +467,11 @@ main.section {
 
 .contact h2 {
   margin: 0 auto;
-  max-width: 18ch;
+  max-width: 13em;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 560;
   letter-spacing: -0.04em;
-  line-height: 1.06;
+  line-height: 1.18;
 }
 
 .contact .lede {
@@ -664,6 +669,34 @@ main.section {
 }
 
 .store-gallery figcaption {
+  padding: 10px 14px 14px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.frame-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 0 0 48px;
+}
+
+.frame-gallery .shot {
+  height: auto;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: var(--shot-bg);
+  border: 1px solid var(--line);
+}
+
+.frame-gallery .shot img {
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+}
+
+.frame-gallery figcaption {
   padding: 10px 14px 14px;
   font-size: 13px;
   color: var(--muted);
