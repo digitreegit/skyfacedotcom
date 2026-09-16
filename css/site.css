@@ -257,11 +257,11 @@ main {
 
 .hero h1 {
   margin: 0 auto;
-  max-width: 16ch;
-  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  max-width: 12ch;
+  font-size: clamp(2.8rem, 7.4vw, 5.6rem);
   font-weight: 560;
-  letter-spacing: -0.045em;
-  line-height: 1.08;
+  letter-spacing: -0.05em;
+  line-height: 1.04;
   color: #111;
 }
 
@@ -464,6 +464,9 @@ main.section {
   margin: 0 auto;
   max-width: 18ch;
   font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 560;
+  letter-spacing: -0.04em;
+  line-height: 1.06;
 }
 
 .contact .lede {
