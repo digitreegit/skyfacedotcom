@@ -30,7 +30,7 @@
       <nav id="siteNav" class="site-nav">
         <a href="#work">Work</a>
         <a href="#practice">Practice</a>
-        <a class="btn btn-primary nav-cta" href="mailto:contact@skyface.com">Get in touch</a>
+        <a class="btn btn-primary nav-cta" href="#contact">Get in touch</a>
       </nav>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu">
           <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true">
@@ -148,10 +148,26 @@
       <div class="wrap">
         <h2 class="reveal">Let’s design and build the next application.</h2>
         <p class="lede reveal">Web and mobile. From HCI and UI/UX through to a working product.</p>
-        <div class="contact-actions reveal">
-          <a class="btn btn-primary btn-lg" href="mailto:contact@skyface.com">Get in touch</a>
-          <a class="contact-mail" href="mailto:contact@skyface.com">contact@skyface.com</a>
-        </div>
+        <form class="contact-form reveal" id="contactForm" method="post" action="#contact" novalidate>
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required maxlength="120" />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required maxlength="200" />
+          </label>
+          <label>
+            Message
+            <textarea name="message" required maxlength="4000" rows="6"></textarea>
+          </label>
+          <div class="hp" aria-hidden="true">
+            <label>Company <input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <div id="turnstile" class="contact-turnstile"></div>
+          <p class="contact-status" role="status" aria-live="polite" hidden></p>
+          <button type="submit" class="btn btn-primary btn-lg">Send message</button>
+        </form>
       </div>
     </section>
   </main>

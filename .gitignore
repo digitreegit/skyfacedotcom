@@ -1,5 +1,8 @@
 .DS_Store
 .vercel
+.env
+.env.local
+.env*.local
 favicon-source.png
 favicon-32.png
 .verify

@@ -115,6 +115,9 @@
     }, { passive: true });
   }
 
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) initContactForm(contactForm);
+
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const items = document.querySelectorAll(".reveal");
   if (reduce || !("IntersectionObserver" in window)) {
@@ -134,4 +137,96 @@
   );
 
   items.forEach((el) => io.observe(el));
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const existing = [...document.scripts].find((node) => node.src.startsWith(src.split("?")[0]));
+      if (existing) {
+        if (window.turnstile) resolve();
+        else existing.addEventListener("load", resolve, { once: true });
+        return;
+      }
+      const script = document.createElement("script");
+      script.src = src;
+      script.async = true;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.head.appendChild(script);
+    });
+  }
+
+  function initContactForm(form) {
+    const status = form.querySelector(".contact-status");
+    const submit = form.querySelector("[type='submit']");
+    const slot = form.querySelector("#turnstile");
+    let widgetId = null;
+
+    const setStatus = (msg, kind) => {
+      status.hidden = !msg;
+      status.textContent = msg || "";
+      status.classList.toggle("is-error", kind === "error");
+      status.classList.toggle("is-ok", kind === "ok");
+    };
+
+    const boot = async () => {
+      try {
+        const res = await fetch("/api/contact");
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok || !data.siteKey) throw new Error();
+        await loadScript("https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit");
+        widgetId = window.turnstile.render(slot, {
+          sitekey: data.siteKey,
+          theme: "light",
+        });
+      } catch {
+        setStatus("Spam protection could not load. Try refreshing the page.", "error");
+        submit.disabled = true;
+      }
+    };
+
+    boot();
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const honey = form.querySelector("[name='company']");
+      if (honey && honey.value.trim()) {
+        setStatus("Thanks – we’ll get back to you soon.", "ok");
+        form.reset();
+        return;
+      }
+
+      const name = form.querySelector("[name='name']").value.trim();
+      const email = form.querySelector("[name='email']").value.trim();
+      const message = form.querySelector("[name='message']").value.trim();
+      const token = widgetId != null && window.turnstile ? window.turnstile.getResponse(widgetId) : "";
+
+      if (name.length < 2 || !email || message.length < 10) {
+        setStatus("Please fill in your name, email, and a short message.", "error");
+        return;
+      }
+      if (!token) {
+        setStatus("Please complete the spam check.", "error");
+        return;
+      }
+
+      submit.disabled = true;
+      setStatus("Sending…");
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, message, token }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(data.error || "Send failed");
+        form.reset();
+        if (widgetId != null && window.turnstile) window.turnstile.reset(widgetId);
+        setStatus("Thanks – we’ll get back to you soon.", "ok");
+      } catch (err) {
+        setStatus(err.message || "Something went wrong. Please try again.", "error");
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  }
 })();

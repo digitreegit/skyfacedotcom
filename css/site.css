@@ -219,6 +219,12 @@ button {
   font-size: 15px;
 }
 
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
 main {
   margin-top: calc(-1 * var(--header-h));
 }
@@ -483,20 +489,70 @@ main.section {
   max-width: 32rem;
 }
 
-.contact-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-  margin-top: 28px;
+.contact-form {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  margin: 32px auto 0;
+  max-width: 32rem;
+  text-align: left;
 }
 
-.contact-mail {
-  font-size: 14.5px;
+.contact-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--fg);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #fff;
+  color: var(--fg);
+  font: inherit;
+  font-size: 15px;
+  font-weight: 400;
+}
+
+.contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.contact-form input:focus-visible,
+.contact-form textarea:focus-visible {
+  border-color: var(--fg);
+}
+
+.contact-turnstile {
+  min-height: 65px;
+}
+
+.contact-form .btn {
+  width: 100%;
+}
+
+.contact-status {
+  margin: 0;
+  font-size: 14px;
   color: var(--muted);
 }
 
-.contact-mail:hover { color: var(--fg); }
+.contact-status.is-error { color: #b42318; }
+.contact-status.is-ok { color: #067647; }
+
+.hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
 
 /* Footer */
 .site-footer {
