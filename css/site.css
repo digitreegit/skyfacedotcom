@@ -254,7 +254,7 @@ main {
 
 .hero h1 {
   margin: 0 auto;
-  max-width: 14em;
+  max-width: 12.5em;
   font-size: clamp(2.4rem, 5.6vw, 4.4rem);
   font-weight: 560;
   letter-spacing: -0.045em;
@@ -275,7 +275,8 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
-  margin-top: 32px;
+  margin: 32px auto 0;
+  max-width: 46rem;
 }
 
 .chip {
