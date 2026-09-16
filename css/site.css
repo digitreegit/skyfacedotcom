@@ -93,7 +93,7 @@ button {
   top: 0;
   z-index: 40;
   height: var(--header-h);
-  background: rgba(255, 255, 255, 0.48);
+  background: rgba(255, 255, 255, 0.72);
   backdrop-filter: saturate(180%) blur(22px);
   -webkit-backdrop-filter: saturate(180%) blur(22px);
   border-bottom: 1px solid transparent;
@@ -101,7 +101,7 @@ button {
 
 .site-header.is-scrolled {
   border-bottom-color: rgba(223, 227, 232, 0.7);
-  background: rgba(255, 255, 255, 0.58);
+  background: rgba(255, 255, 255, 0.82);
 }
 
 .header-inner {
@@ -340,7 +340,7 @@ main.section {
 
 .work-card {
   display: grid;
-  grid-template-columns: 72px minmax(0, 1fr);
+  grid-template-columns: 108px minmax(0, 1fr);
   gap: 0 18px;
   align-items: center;
   color: inherit;
@@ -349,9 +349,9 @@ main.section {
 .work-card:hover .shot { transform: translateY(-2px); }
 
 .work-card .shot {
-  width: 72px;
-  height: 72px;
-  border-radius: 16px;
+  width: 108px;
+  height: 108px;
+  border-radius: 24px;
   background: none;
   border: 0;
 }
@@ -500,43 +500,17 @@ main.section {
 
 /* Footer */
 .site-footer {
-  padding: 48px 0 32px;
+  padding: 32px 0;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 14px;
 }
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-bottom: 40px;
-}
-
-.footer-col strong {
-  display: block;
-  color: var(--fg);
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-.footer-col a,
-.footer-col span {
-  display: block;
-  padding: 4px 0;
-  color: var(--muted);
-}
-
-.footer-col a:hover { color: var(--fg); }
 
 .footer-bottom {
   display: flex;
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
   font-size: 13px;
   color: var(--faint);
 }
@@ -625,6 +599,11 @@ main.section {
   align-items: start;
 }
 
+.device-gallery--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
 .device-gallery .shot {
   height: auto;
   display: block;
@@ -634,6 +613,15 @@ main.section {
   overflow: visible;
   transform: none;
 }
+
+.device-gallery button.shot {
+  width: 100%;
+  cursor: zoom-in;
+  font: inherit;
+  text-align: inherit;
+}
+
+.device-gallery button.shot:hover { opacity: 0.92; }
 
 .device-gallery a.shot:hover { transform: none; }
 
@@ -645,6 +633,64 @@ main.section {
   object-position: top center;
   padding: 0;
 }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 56px 80px 40px;
+  background: rgba(8, 10, 12, 0.88);
+}
+
+.lightbox.is-open { display: flex; }
+
+.lightbox img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: #fff;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.lightbox-close { top: 16px; right: 16px; }
+
+.lightbox-prev,
+.lightbox-next { top: 50%; transform: translateY(-50%); }
+
+.lightbox-prev { left: 16px; }
+
+.lightbox-next { right: 16px; }
+
+.lightbox-close svg,
+.lightbox-prev svg,
+.lightbox-next svg {
+  width: 22px;
+  height: 22px;
+}
+
+body.lightbox-open { overflow: hidden; }
 
 .feature-grid {
   display: grid;
@@ -793,7 +839,6 @@ main.section {
 
 @media (max-width: 960px) {
   .keyword-grid { grid-template-columns: 1fr 1fr; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 860px) {
@@ -805,13 +850,14 @@ main.section {
   .shot-gallery .shot { height: 240px; }
 
   .device-gallery { grid-template-columns: 1fr 1fr; }
+  .device-gallery--two { grid-template-columns: 1fr 1fr; }
   .feature-grid { grid-template-columns: 1fr; }
 
   .hero { padding: calc(64px + var(--header-h)) 0 72px; }
   .section { padding: 64px 0; }
   main.section { padding-top: calc(32px + var(--header-h)); }
   .shot { height: 220px; }
-  .work-card .shot { height: 72px; }
+  .work-card .shot { width: 108px; height: 108px; }
   .device-gallery .shot { height: auto; }
 }
 
