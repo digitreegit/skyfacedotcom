@@ -172,7 +172,7 @@
       const message = form.querySelector("[name='message']").value.trim();
       const token = tokenValue();
 
-      if (name.length < 2 || !email || message.length < 10) {
+      if (name.length < 2 || !email || message.length < 2) {
         setStatus("Please fill in your name, email, and a short message.", "error");
         return;
       }

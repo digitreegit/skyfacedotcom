@@ -56,7 +56,7 @@ export async function POST(request) {
   if (!EMAIL.test(email) || email.length > 200) {
     return json(400, { error: "Please enter a valid email." });
   }
-  if (message.length < 10 || message.length > 4000) {
+  if (message.length < 2 || message.length > 4000) {
     return json(400, { error: "Please enter a message." });
   }
   if (!token) {
