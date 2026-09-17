@@ -340,8 +340,9 @@ main.section {
 .work-grid {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 48px;
   max-width: 34rem;
+  margin-inline: auto;
 }
 
 .work-card {
