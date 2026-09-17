@@ -1,8 +1,14 @@
 const TO = process.env.CONTACT_TO || "contact@skyface.com";
-const FROM = process.env.CONTACT_FROM || "Skyface <contact@skyface.com>";
 const SITE = process.env.SITE_URL || "https://skyface.com";
 const LOGO = `${SITE}/img/email/skyface-logo.png`;
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function fromHeader() {
+  const raw = process.env.CONTACT_FROM || "Skyface <contact@skyface.com>";
+  const bracket = raw.match(/<([^>]+)>/);
+  const address = (bracket ? bracket[1] : raw).trim();
+  return `Skyface <${address.includes("@") ? address : "contact@skyface.com"}>`;
+}
 
 function json(status, body) {
   return new Response(JSON.stringify(body), {
@@ -212,7 +218,7 @@ export async function POST(request) {
   const inquiryOk = await sendEmail(
     resendKey,
     {
-      from: FROM,
+      from: fromHeader(),
       to: [TO],
       reply_to: email,
       subject: `Skyface inquiry from ${name}`,
@@ -229,7 +235,7 @@ export async function POST(request) {
   const confirmOk = await sendEmail(
     resendKey,
     {
-      from: FROM,
+      from: fromHeader(),
       to: [email],
       reply_to: TO,
       subject: "We received your message – Skyface",
