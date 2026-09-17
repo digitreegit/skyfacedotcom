@@ -290,7 +290,7 @@ main {
   column-gap: 8px;
   row-gap: 12px;
   margin: 32px auto 0;
-  max-width: 46rem;
+  max-width: 40rem;
 }
 
 .chip {
