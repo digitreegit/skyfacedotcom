@@ -148,7 +148,7 @@
       <div class="wrap">
         <h2 class="reveal">Let’s design and build the next application.</h2>
         <p class="lede reveal">Web and mobile. From HCI and UI/UX through to a working product.</p>
-        <form class="contact-form reveal" id="contactForm" method="post" action="#contact" novalidate>
+        <form class="contact-form" id="contactForm" method="post" action="#contact" novalidate>
           <label>
             Name
             <input type="text" name="name" autocomplete="name" required maxlength="120" />
@@ -164,7 +164,7 @@
           <div class="hp" aria-hidden="true">
             <label>Company <input type="text" name="company" tabindex="-1" autocomplete="off" /></label>
           </div>
-          <div id="turnstile" class="contact-turnstile"></div>
+          <div class="cf-turnstile contact-turnstile" data-sitekey="0x4AAAAAAE5fIm8HOaoEnx4I" data-theme="light"></div>
           <p class="contact-status" role="status" aria-live="polite" hidden></p>
           <button type="submit" class="btn btn-primary btn-lg">Send message</button>
         </form>
@@ -185,6 +185,7 @@
     </div>
   </footer>
 
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="js/site.js"></script>
 </body>
 </html>
