@@ -675,6 +675,11 @@ main.section {
   gap: 16px;
 }
 
+.device-gallery--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
 .device-gallery .shot {
   height: auto;
   display: block;
@@ -926,6 +931,7 @@ body.lightbox-open { overflow: hidden; }
 
   .device-gallery { grid-template-columns: 1fr 1fr; }
   .device-gallery--two { grid-template-columns: 1fr 1fr; }
+  .device-gallery--three { grid-template-columns: 1fr 1fr; }
   .feature-grid { grid-template-columns: 1fr; }
 
   .hero { padding: calc(64px + var(--header-h)) 0 72px; }
