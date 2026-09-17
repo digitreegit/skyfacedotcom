@@ -275,6 +275,13 @@ main {
   color: #111;
 }
 
+.hero-hyphen {
+  display: inline-block;
+  letter-spacing: 0;
+  transform: scaleX(0.55);
+  margin-inline: -0.1em;
+}
+
 .hero-copy {
   margin: 22px auto 0;
   max-width: 38rem;
@@ -696,6 +703,10 @@ main.section {
   object-fit: contain;
   object-position: top center;
   padding: 0;
+}
+
+.device-gallery .shot--outline img {
+  border: 1px solid #e6e8eb;
 }
 
 .lightbox {
